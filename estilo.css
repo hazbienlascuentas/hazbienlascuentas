@@ -1,0 +1,15 @@
+:root{--pizarra:#16211C;--tiza:#F3EFE4;--amarillo:#F2C14E;--gris:#A9B0A8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pizarra);color:var(--tiza);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+main{max-width:760px;margin:0 auto;padding:48px 24px 72px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.marca{font-weight:800;font-size:2rem;letter-spacing:.02em}
+.marca .tic{color:var(--amarillo)}
+h1{font-weight:800;text-transform:uppercase;font-size:1.6rem;line-height:1.2;margin:0 0 8px}
+h2{color:var(--amarillo);font-size:1.15rem;margin:32px 0 8px}
+a{color:var(--amarillo)}
+nav{margin:8px 0 32px;display:flex;gap:18px;flex-wrap:wrap}
+.nota{color:var(--gris);font-size:.9rem}
+hr{border:0;border-top:1px solid #2c3a33;margin:40px 0}
+ul{padding-left:20px}
+footer{margin-top:48px;color:var(--gris);font-size:.85rem}
