@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Autorización – Haz bien las cuentas</title>
+<link rel="stylesheet" href="estilo.css">
+<style>
+#codigo{display:block;width:100%;padding:12px;margin:12px 0;background:#0f1713;color:var(--tiza);border:1px solid #2c3a33;border-radius:6px;font-family:Consolas,monospace;font-size:.95rem;word-break:break-all}
+button{background:var(--amarillo);color:var(--pizarra);border:0;border-radius:6px;padding:10px 18px;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+<main>
+<header><span class="marca">= <span class="tic">✓</span></span></header>
+<h1 id="titulo">Autorización</h1>
+<p id="texto">Esta página recibe el código de autorización de la herramienta de publicación del canal.</p>
+<code id="codigo" hidden></code>
+<button id="copiar" hidden>Copiar código</button>
+<p class="nota">El código caduca en unos minutos y solo sirve una vez. Esta página no guarda ni envía ningún dato: todo ocurre en tu navegador.</p>
+</main>
+<script>
+const p = new URLSearchParams(location.search);
+const codigo = p.get("code"), error = p.get("error");
+const t = document.getElementById("titulo"), x = document.getElementById("texto");
+if (codigo) {
+  t.textContent = "Autorizado";
+  x.textContent = "Copia este código y pégalo en la terminal donde se está ejecutando publicar.py.";
+  const c = document.getElementById("codigo"), b = document.getElementById("copiar");
+  c.textContent = codigo; c.hidden = false; b.hidden = false;
+  b.onclick = () => { navigator.clipboard.writeText(codigo).then(() => b.textContent = "Copiado ✓"); };
+} else if (error) {
+  t.textContent = "No autorizado";
+  x.textContent = "TikTok ha devuelto un error: " + error + ". Vuelve a ejecutar publicar.py e inténtalo de nuevo.";
+}
+</script>
+</body>
+</html>
